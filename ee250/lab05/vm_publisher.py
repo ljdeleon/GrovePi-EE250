@@ -4,7 +4,8 @@ Run vm_publisher.py in a separate terminal on your VM."""
 
 import paho.mqtt.client as mqtt
 import time
-from pynput import keyboard
+#from pynput import keyboard
+
 
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
@@ -15,14 +16,15 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
 
-def on_press(key):
-    try: 
-        k = key.char # single-char keys
-    except: 
-        k = key.name # other keys
-    
+def on_press():
+    k = input("Enter key: ")
+    # try:
+        # k = key.char # single-char keys
+    # except:
+        # k = key.name # other keys
+    # 
     if k == 'w':
-        print("w")
+        print("w+")
         #send "w" character to rpi
     elif k == 'a':
         print("a")
@@ -38,8 +40,8 @@ def on_press(key):
 
 if __name__ == '__main__':
     #setup the keyboard event listener
-    lis = keyboard.Listener(on_press=on_press)
-    lis.start() # start to listen on a separate thread
+    # lis = keyboard.Listener(on_press=on_press)
+    # lis.start() # start to listen on a separate thread
 
     #this section is covered in publisher_and_subscriber_example.py
     client = mqtt.Client()
@@ -50,6 +52,8 @@ if __name__ == '__main__':
 
     while True:
         print("delete this line")
-        time.sleep(1)
+        time.sleep(0.1)
+        on_press()
+        
             
 
