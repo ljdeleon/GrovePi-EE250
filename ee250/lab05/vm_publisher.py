@@ -7,11 +7,20 @@ import time
 #from pynput import keyboard
 
 
+#Custom callbacks need to be structured with three args like on_message()
+def custom_callback(client, userdata, message):
+    #the third argument is 'message' here unlike 'msg' in on_message 
+    print("custom_callback: " + message.topic + " " + "\"" + 
+        str(message.payload, "utf-8") + "\"")
+    print("custom_callback: message.payload is of type " + 
+          str(type(message.payload)))
+
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
     #subscribe to topics of interest here
-
+    client.subscribe("luis_deleon/led")
+    client.message_callback_add("luis_deleon/led",custom_callback)
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
@@ -30,6 +39,7 @@ def on_press():
         print("a")
         # send "a" character to rpi
         #send "LED_ON"
+        client.publish("luis_deleon/led",str("LED_ON"))
     elif k == 's':
         print("s")
         # send "s" character to rpi
