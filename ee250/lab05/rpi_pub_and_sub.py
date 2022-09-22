@@ -12,6 +12,15 @@ led = 3
 pinMode(led,"output")
 digitalWrite(led,1)
 
+# set I2C to use the hardware bus
+grovepi.set_bus("RPI_1")
+
+# Connect the Grove Ultrasonic Ranger to digital port D4
+# SIG,NC,VCC,GND
+ultrasonic_ranger = 4
+
+
+    
 def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
@@ -27,6 +36,7 @@ def custom_callback(client, userdata, message):
         str(message.payload, "utf-8") + "\"")
     print("custom_callback: message.payload is of type " + 
           str(type(message.payload)))
+
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
     client = mqtt.Client()
@@ -38,5 +48,6 @@ if __name__ == '__main__':
     while True:
         print("delete this line")
         time.sleep(1)
+        print(ultrasonicRead(ultrasonic_ranger))
             
 
