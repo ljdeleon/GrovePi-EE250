@@ -36,11 +36,10 @@ def custom_callback(client, userdata, message):
         str(message.payload, "utf-8") + "\"")
     print("custom_callback: message.payload is of type " + 
           str(type(message.payload)))
-
-if str(type(message.payload)) == 'LED_ON':
-    digitalWrite(led,1)
-else:
-    digitalWrite(led,0)
+    if str(type(message.payload)) == 'LED_ON':
+        digitalWrite(led,1)
+    else:
+        digitalWrite(led,0)
 
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
