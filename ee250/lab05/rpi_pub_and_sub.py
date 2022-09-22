@@ -38,7 +38,7 @@ def custom_callback(client, userdata, message):
           str(type(message.payload)))
     if str(type(message.payload)) == 'LED_ON':
         digitalWrite(led,1)
-    else:
+    elif str(type(message.payload)) == 'LED_OFF':
         digitalWrite(led,0)
 
 if __name__ == '__main__':
