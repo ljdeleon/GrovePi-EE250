@@ -13,7 +13,7 @@ pinMode(led,"output")
 digitalWrite(led,1)
 
 # set I2C to use the hardware bus
-grovepi.set_bus("RPI_1")
+set_bus("RPI_1")
 
 # Connect the Grove Ultrasonic Ranger to digital port D4
 # SIG,NC,VCC,GND
@@ -46,8 +46,8 @@ if __name__ == '__main__':
     client.loop_start()
 
     while True:
-        print("delete this line")
         time.sleep(1)
-        print(ultrasonicRead(ultrasonic_ranger))
+        distance = (ultrasonicRead(ultrasonic_ranger))
+        client.publish("luis_deleon/ultrasonicRanger", str(distance))
             
 
