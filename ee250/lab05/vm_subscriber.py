@@ -9,7 +9,9 @@ def on_connect(client, userdata, flags, rc):
     print("Connected to server (i.e., broker) with result code "+str(rc))
 
     #subscribe to the ultrasonic ranger topic here
-    client.subscribe("luis_deleon/ultrasonicRanger",custom_callback)
+    client.subscribe("luis_deleon/ultrasonicRanger")
+    client.message_callback_add("luis_deleon/ultrasonicRanger",custom_callback)
+
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
