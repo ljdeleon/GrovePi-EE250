@@ -24,7 +24,7 @@ def custom_callback(client, userdata, message):
      #     str(type(message.payload)))
           #message.decode('base64','strict')
 
-if __name__ == '__main__':
+    if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
     client = mqtt.Client()
     client.on_message = on_message
