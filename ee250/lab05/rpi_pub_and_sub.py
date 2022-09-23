@@ -37,9 +37,9 @@ def custom_callback(client, userdata, message):
         str(message.payload, "utf-8") + "\"")
     print("custom_callback: message.payload is of type " + 
           str(type(message.payload)))
-    if str(type(message.payload)) == 'LED_ON':
+    if str(message.payload, "utf-8") == 'LED_ON':
         digitalWrite(led,1)
-    elif str(type(message.payload)) == 'LED_OFF':
+    elif str(message.payload, "utf-8") == 'LED_OFF':
         digitalWrite(led,0)
 
 if __name__ == '__main__':
