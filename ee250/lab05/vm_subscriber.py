@@ -13,6 +13,9 @@ def on_connect(client, userdata, flags, rc):
     client.message_callback_add("luis_deleon/ultrasonicRanger",custom_callback)
     client.subscribe("luis_deleon/button")
     client.message_callback_add("luis_deleon/button",custom_callback2)
+    client.subscribe("luis_deleon/lcd")
+    client.message_callback_add("luis_deleon/lcd",custom_callback3)
+
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
@@ -32,6 +35,13 @@ def custom_callback2(client, userdata, message):
     #print("custom_callback: message.payload is of type " + 
      #     str(type(message.payload)))
           #message.decode('base64','strict')    
+def custom_callback3(client, userdata, message):
+    #the third argument is 'message' here unlike 'msg' in on_message 
+    #print("custom_callback: " + message.topic + " " + "\"" + 
+    print(str(message.payload, "utf-8"))
+    #print("custom_callback: message.payload is of type " + 
+     #     str(type(message.payload)))
+          #message.decode('base64','strict')   
 
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py

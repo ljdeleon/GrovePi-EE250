@@ -32,6 +32,8 @@ def on_connect(client, userdata, flags, rc):
     #subscribe to topics of interest here
     client.subscribe("luis_deleon/led")
     client.message_callback_add("luis_deleon/led",custom_callback)
+    client.subscribe("luis_deleon/lcd")
+    client.message_callback_add("luis_deleon/led",custom_callback2)
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
@@ -44,9 +46,20 @@ def custom_callback(client, userdata, message):
     #      str(type(message.payload)))
     if str(message.payload, "utf-8") == 'LED_ON':
         digitalWrite(led,1)
+        setText_norefresh(str("a"))
     elif str(message.payload, "utf-8") == 'LED_OFF':
         digitalWrite(led,0)
-
+        setText_norefresh(str("d"))
+def custom_callback2(client, userdata, message):
+    #the third argument is 'message' here unlike 'msg' in on_message 
+    print("custom_callback: " + message.topic + " " + "\"" + 
+        str(message.payload, "utf-8") + "\"")
+   # print("custom_callback: message.payload is of type " + 
+    #      str(type(message.payload)))
+    if str(message.payload, "utf-8") == 'w':
+        setText_norefresh(str("w"))
+    elif str(message.payload, "utf-8") == 's':
+        setText_norefresh(str("s")) 
 if __name__ == '__main__':
     #this section is covered in publisher_and_subscriber_example.py
     client = mqtt.Client()

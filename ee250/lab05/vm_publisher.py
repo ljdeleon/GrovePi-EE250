@@ -24,19 +24,23 @@ def on_press(key):
     if k == 'w':
         print("w")
         #send "w" character to rpi
+        client.publish("luis_deleon/lcd",str("w"))
     elif k == 'a':
         print("a")
         # send "a" character to rpi
         #send "LED_ON"
         client.publish("luis_deleon/led",str("LED_ON"))
+        client.publish("luis_deleon/lcd",str("a"))
     elif k == 's':
         print("s")
         # send "s" character to rpi
+        client.publish("luis_deleon/lcd",str("s"))
     elif k == 'd':
         print("d")
         # send "d" character to rpi
         # send "LED_OFF"
         client.publish("luis_deleon/led",str("LED_OFF"))
+        client.publish("luis_deleon/lcd",str("d"))
 
 if __name__ == '__main__':
     #setup the keyboard event listener
