@@ -4,6 +4,7 @@ Run rpi_pub_and_sub.py on your Raspberry Pi."""
 
 import paho.mqtt.client as mqtt
 import time
+import sys
 from grovepi import*
 sys.path.append("../../Software/Python/grove_rgb_lcd")
 from grove_rgb_lcd import*
@@ -34,7 +35,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("luis_deleon/led")
     client.message_callback_add("luis_deleon/led",custom_callback)
     client.subscribe("luis_deleon/lcd")
-    client.message_callback_add("luis_deleon/led",custom_callback2)
+    client.message_callback_add("luis_deleon/lcd",custom_callback2)
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
     print("on_message: " + msg.topic + " " + str(msg.payload, "utf-8"))
