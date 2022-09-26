@@ -9,6 +9,10 @@ from grovepi import*
 #connecting led to d3
 led = 3
 
+# connecting button to D2  
+
+button =2 
+
 pinMode(led,"output")
 
 
@@ -54,5 +58,8 @@ if __name__ == '__main__':
         time.sleep(1)
         distance = (ultrasonicRead(ultrasonic_ranger))
         client.publish("luis_deleon/ultrasonicRanger", str(distance))
+        button_status=digitalRead(button)
+        if button_status: # if high print button pressed
+            client.publish("luis_deleon/button",str("Button pressed"))
             
 
