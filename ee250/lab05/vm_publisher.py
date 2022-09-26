@@ -2,6 +2,10 @@
 
 Run vm_publisher.py in a separate terminal on your VM."""
 
+# Luis De Leon
+#Jacob Abell
+#Git Hub Repository : git@github.com:ljdeleon/GrovePi-EE250.git
+
 import paho.mqtt.client as mqtt
 import time
 from pynput import keyboard

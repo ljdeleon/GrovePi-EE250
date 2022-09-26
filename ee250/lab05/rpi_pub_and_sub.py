@@ -1,7 +1,9 @@
 """EE 250L Lab 04 Starter Code
 
 Run rpi_pub_and_sub.py on your Raspberry Pi."""
-
+# Luis De Leon
+#Jacob Abell
+#Git Hub Repository : git@github.com:ljdeleon/GrovePi-EE250.git
 import paho.mqtt.client as mqtt
 import time
 import sys
