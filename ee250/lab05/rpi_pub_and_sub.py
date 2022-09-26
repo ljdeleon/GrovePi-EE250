@@ -14,6 +14,7 @@ led = 3
 button =2 
 
 pinMode(led,"output")
+pinMode(button,"input")
 
 
 # set I2C to use the hardware bus
