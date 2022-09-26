@@ -5,7 +5,8 @@ Run rpi_pub_and_sub.py on your Raspberry Pi."""
 import paho.mqtt.client as mqtt
 import time
 from grovepi import*
-
+sys.path.append("../../Software/Python/grove_rgb_lcd")
+from grove_rgb_lcd import*
 #connecting led to d3
 led = 3
 
