@@ -11,7 +11,7 @@ def on_connect(client, userdata, flags, rc):
     #subscribe to the ultrasonic ranger topic here
     client.subscribe("luis_deleon/ultrasonicRanger")
     client.message_callback_add("luis_deleon/ultrasonicRanger",custom_callback)
-    client.subscribe("luid_deleon/button")
+    client.subscribe("luis_deleon/button")
     client.message_callback_add("luis_deleon/button",custom_callback2)
 #Default message callback. Please use custom callbacks.
 def on_message(client, userdata, msg):
