@@ -6,7 +6,7 @@ import paho.mqtt.client as mqtt
 import time
 import sys
 from grovepi import*
-sys.path.appeend('../../Software/Python/')
+sys.path.append('../../Software/Python/')
 sys.path.append("../../Software/Python/grove_rgb_lcd")
 from grove_rgb_lcd import*
 #connecting led to d3
