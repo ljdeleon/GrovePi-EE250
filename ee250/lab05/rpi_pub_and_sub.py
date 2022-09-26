@@ -77,6 +77,6 @@ if __name__ == '__main__':
         client.publish("luis_deleon/ultrasonicRanger", str(distance))
         button_status=digitalRead(button)
         if button_status: # if high print button pressed
-            client.publish("luis_deleon/button",str("Button pressed"))
+            client.publish("luis_deleon/button",str("Button pressed!"))
             
 
