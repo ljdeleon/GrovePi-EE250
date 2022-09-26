@@ -20,7 +20,7 @@ def custom_callback(client, userdata, message):
     #the third argument is 'message' here unlike 'msg' in on_message 
     #print("custom_callback: " + message.topic + " " + "\"" + 
     print("VM: " +  
-        str(message.payload, "utf-8") + "cm\"")
+        str(message.payload, "utf-8") + "cm")
     #print("custom_callback: message.payload is of type " + 
      #     str(type(message.payload)))
           #message.decode('base64','strict')
